@@ -1,19 +1,10 @@
-function Bar(monitor = 0) {
-    const myLabel = Widget.Label({
-        label: 'some example content',
-    })
-
-    Utils.interval(1000, () => {
-        myLabel.label = Utils.exec('date')
-    })
-
-    return Widget.Window({
-        monitor,
-        name: `bar${monitor}`,
-        anchor: ['top', 'left', 'right'],
-        child: myLabel,
-    })
-}
+const Bar = (monitor = 0) => Widget.Window({
+    monitor,
+    name: `bar${monitor}`,
+    anchor: ['top', 'left', 'right'],
+    child: Widget.Label()
+        .poll(1000, label => label.label = Utils.execAsync('date')),
+})
 
 App.config({
     windows: [
