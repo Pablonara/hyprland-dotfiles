@@ -1,11 +1,9 @@
-const date = Variable('', {
-    poll: [1000, 'date'],
-})
-
-const Bar = () => Widget.Window({
-    name: 'bar',
+const Bar = (monitor = 0) => Widget.Window({
+    monitor,
+    name: `bar${monitor}`,
     anchor: ['top', 'left', 'right'],
-    child: Widget.Label({ label: date.bind() })
+    child: Widget.Label()
+        .poll(1000, label => label.label = Utils.execAsync('date')),
 })
 
 App.config({
