@@ -1,40 +1,93 @@
 
 
-// widgets are GObjects too
-label.connect('notify::label', ({ label }) => {
-    print('label changed to ', label)
-})
-
+const hyprland = await Service.import("hyprland")
+const notifications = await Service.import("notifications")
+const mpris = await Service.import("mpris")
+const audio = await Service.import("audio")
+const battery = await Service.import("battery")
+const systemtray = await Service.import("systemtray")
 
 // battery 
-const battery = await Service.import('battery')
 
-const batteryProgress = Widget.CircularProgress({
-    value: battery.bind('percent').as(p => p / 100),
-    child: Widget.Icon({
-        icon: battery.bind('icon_name'),
-    }),
+const date = Variable("", {
+    poll: [1000, 'date "+%H:%M:%S %b %e."'],
 })
+
+// widgets can be only assigned as a child in one container
+// so to make a reuseable widget, make it a function
+// then you can simply instantiate one by calling it
+
+function Workspaces() {
+    const activeId = hyprland.active.workspace.bind("id")
+    const workspaces = hyprland.bind("workspaces")
+        .as(ws => ws.map(({ id }) => Widget.Button({
+            on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
+            child: Widget.Label(`${id}`),
+            class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
+        })))
+
+    return Widget.Box({
+        class_name: "workspaces",
+        children: workspaces,
+    })
+}
+
+
+function ClientTitle() {
+    return Widget.Label({
+        class_name: "client-title",
+        label: hyprland.active.client.bind("title"),
+    })
+}
+
+
+function Clock() {
+    return Widget.Label({
+        class_name: "clock",
+        label: date.bind(),
+    })
+}
+
+
+
+
+// layout of the bar
+function Left() {
+    return Widget.Box({
+        spacing: 8,
+        children: [
+            Workspaces(),
+            ClientTitle(),
+        ],
+    })
+}
+
+function Right() {
+    return Widget.Box({
+        spacing: 8,
+        children: [
+            Clock()
+        ],
+    })
+}
 
 
 
 function Bar(monitor = 0) {
-
-    const dateLabel = Widget.Label({
-        label: 'some example content',
-    });
-
-    Utils.interval(1000, () => {
-        dateLabel.label = Utils.exec('date');
-    });
-
     return Widget.Window({
+        name: `bar-${monitor}`, // name has to be unique because linux stuff
+        class_name: "bar",
         monitor,
-        name: `bar${monitor}`,
-        anchor: ['top', 'left', 'right'],
-        child: dateLabel,
-    });
+        anchor: ["top", "left", "right"],
+        exclusivity: "exclusive",
+        child: Widget.CenterBox({
+            start_widget: Left(),
+            // center_widget: Workspaces(),
+            end_widget: Right(),
+        }),
+    })
 }
+
 
 
 //const Bar = (monitor = 0) => Widget.Window({
@@ -46,9 +99,11 @@ function Bar(monitor = 0) {
 //})
 
 App.config({
+    style: "./styles.css",
     windows: [
         Bar(0), // instantiate per monitor
-        Bar(1),
+        // Bar(1),
     ],
 })
 
+export { }
