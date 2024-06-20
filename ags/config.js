@@ -10,7 +10,7 @@ const systemtray = await Service.import("systemtray")
 // battery 
 
 const date = Variable("", {
-    poll: [1000, 'date "+%H:%M:%S %b %e."'],
+    poll: [1000, 'date "+%H:%M:%S %b %e"'],
 })
 
 // widgets can be only assigned as a child in one container
@@ -138,6 +138,8 @@ function Media() {
     })
 }
 
+const { speaker } = await Service.import("audio")
+
 function Volume() {
     const icons = {
         101: "overamplified",
@@ -147,6 +149,8 @@ function Volume() {
         0: "muted",
     }
 
+    var volNum = audio.speaker.volume;
+
     function getIcon() {
         const icon = audio.speaker.is_muted ? 0 : [101, 67, 34, 1, 0].find(
             threshold => threshold <= audio.speaker.volume * 100)
@@ -154,37 +158,41 @@ function Volume() {
         return `audio-volume-${icons[icon]}-symbolic`
     }
 
+    function getVolume() {
+        const volume = audio.speaker.volume
+        return volume
+    }
+
     const icon = Widget.Icon({
         icon: Utils.watch(getIcon(), audio.speaker, getIcon),
+        tooltip_text: String(`Volume ${Math.floor(getVolume())}%`) // this doesnt work fix later
     })
 
     const slider = Widget.Slider({
         hexpand: true,
         draw_value: false,
-        on_change: ({ value }) => audio.speaker.volume = value,
+        on_change: function(event) {
+            const sliderValue = event.value;  
+            audio.speaker.volume = sliderValue;
+            let volNum = event.value
+        },
         setup: self => self.hook(audio.speaker, () => {
             self.value = audio.speaker.volume || 0
         }),
     })
 
+    const volumePercent = Widget.Label({
+        label: String(Utils.watch(getVolume(), audio.speaker, getVolume)),
+        // label: String(audio.speaker.volume || 0),
+    })
+
     return Widget.Box({
         class_name: "volume",
         css: "min-width: 180px",
-        children: [icon, slider],
+        children: [icon, slider, volumePercent],
     })
 }
 
-function getCurrVol() {
-    return audio.speaker.volume || 0;
-}
-
-function VolumeNumber() {
-    console.log(audio.speaker.volume);
-    return Widget.Label({
-        class_name: "VolumeNumber",
-        label: getCurrVol(),
-    })
-}
 
 // layout of the bar
 function Left() {
@@ -204,7 +212,6 @@ function Right() {
         children: [
             Volume(),
             Notification(),
-            VolumeNumber()
         ],
     })
 }
