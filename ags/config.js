@@ -159,8 +159,14 @@ function Volume() {
     }
 
     function getVolume() {
-        const volume = audio.speaker.volume
-        return volume
+        // Check if the speaker is muted
+        if (audio.speaker.is_muted) {
+            return 0; // If muted, volume percentage is 0%
+        } else {
+            // Calculate the volume percentage based on current volume
+            const volumePercentage = audio.speaker.volume * 100;
+            return volumePercentage.toFixed(2); // Return percentage rounded to two decimal places
+        }
     }
 
     const icon = Widget.Icon({
@@ -171,8 +177,8 @@ function Volume() {
     const slider = Widget.Slider({
         hexpand: true,
         draw_value: false,
-        on_change: function(event) {
-            const sliderValue = event.value;  
+        on_change: function (event) {
+            const sliderValue = event.value;
             audio.speaker.volume = sliderValue;
             let volNum = event.value
         },
@@ -182,8 +188,10 @@ function Volume() {
     })
 
     const volumePercent = Widget.Label({
-        label: String(Utils.watch(getVolume(), audio.speaker, getVolume)),
+        label: Utils.watch(getVolume(), audio.speaker, getVolume),
         // label: String(audio.speaker.volume || 0),
+    })
+    Utils.interval(1000, () => {
     })
 
     return Widget.Box({
@@ -193,6 +201,25 @@ function Volume() {
     })
 }
 
+
+function Battery() {
+    const value = battery.bind("percent").as(p => p > 0 ? p / 100 : 0)
+    const icon = battery.bind("percent").as(p =>
+        `battery-level-${Math.floor(p / 10) * 10}-symbolic`)
+        
+    return Widget.Box({
+        class_name: "battery",
+        visible: battery.bind("available"),
+        children: [
+            Widget.Icon({ icon }),
+            Widget.LevelBar({
+                widthRequest: 140,
+                vpack: "center",
+                value,
+            }),
+        ],
+    })
+}
 
 // layout of the bar
 function Left() {
@@ -210,6 +237,7 @@ function Right() {
         hpack: "end",
         spacing: 8,
         children: [
+            Battery(),
             Volume(),
             Notification(),
         ],
@@ -220,7 +248,8 @@ function Center() {
     return Widget.Box({
         spacing: 8,
         children: [
-            Clock()
+            Clock(),
+            Media(),
         ],
     })
 }
