@@ -4,14 +4,17 @@ window.bar {
 }
 
 button {
-    min-width: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    min-width: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
     background-color: transparent;
+    border-radius: 0px;
 }
 
 button:active {
-    background-color: @theme_selected_bg_color;
+    /* background-color: @theme_selected_bg_color; */
+    background-color: #5fc1e7;
+    
 }
 
 button:hover {

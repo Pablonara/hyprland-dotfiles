@@ -19,12 +19,63 @@ const date = Variable("", {
 
 function Workspaces() {
     const activeId = hyprland.active.workspace.bind("id")
-    const workspaces = hyprland.bind("workspaces")
-        .as(ws => ws.map(({ id }) => Widget.Button({
-            on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
-            child: Widget.Label(`${id}`),
-            class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
-        })))
+    // const workspaces = hyprland.bind("workspaces")
+    //     .as(ws => ws.map(({ id }) => Widget.Button({
+    //         on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
+    //         child: Widget.Label(`${id}`),
+    //         class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
+    //     })))
+
+    // Secret workspace labeling below
+
+    // const workspaces = hyprland.bind("workspaces")
+    //     .as(function (ws) {
+    //         return ws.map(function (workspace) {
+    //             const id = workspace.id;
+    //             let buttonProps = {
+    //                 on_clicked: function () {
+    //                     hyprland.messageAsync(`dispatch workspace ${id}`);
+    //                 },
+    //             };
+
+    //             if (id !== -98) {
+    //                 buttonProps.child = Widget.Label(`${id}`);
+    //                 buttonProps.class_name = activeId.as(function (i) {
+    //                     return i === id ? "focused" : "";
+    //                 });
+    //             }
+
+    //             else { // hyprland special workspace
+    //                 buttonProps.child = Widget.Label(`0`);
+    //                 buttonProps.class_name = activeId.as(function (i) {
+    //                     return i === -99 ? "focused" : "";
+    //                 });
+    //             }
+
+    //             return Widget.Button(buttonProps);
+    //         });
+    //     });
+
+    const workspaces = Array.from({ length: 10 }, (_, index) => {
+        const id = index + 1;
+        let buttonProps = {
+            on_clicked: function () {
+                hyprland.messageAsync(`dispatch workspace ${id}`);
+            },
+        };
+
+        // Add child and class_name properties for IDs other than -98 if you are planning to work with hidden workspaces
+        if (id !== -98) {
+            buttonProps.child = Widget.Label(`${id}`);
+            buttonProps.class_name = activeId.as(function (i) {
+                return i === id ? "focused" : "";
+            });
+        }
+
+        return Widget.Button(buttonProps);
+    });
+
+
 
     return Widget.Box({
         class_name: "workspaces",
@@ -123,6 +174,18 @@ function Volume() {
     })
 }
 
+function getCurrVol() {
+    return audio.speaker.volume || 0;
+}
+
+function VolumeNumber() {
+    console.log(audio.speaker.volume);
+    return Widget.Label({
+        class_name: "VolumeNumber",
+        label: getCurrVol(),
+    })
+}
+
 // layout of the bar
 function Left() {
     return Widget.Box({
@@ -140,7 +203,8 @@ function Right() {
         spacing: 8,
         children: [
             Volume(),
-            Notification()
+            Notification(),
+            VolumeNumber()
         ],
     })
 }
