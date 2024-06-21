@@ -1,4 +1,4 @@
-
+import { applauncher } from "./applauncher.js"
 
 const hyprland = await Service.import("hyprland")
 const notifications = await Service.import("notifications")
@@ -284,6 +284,7 @@ App.config({
     windows: [
         Bar(0), // instantiate per monitor
         // Bar(1),
+        applauncher,
     ],
 })
 
