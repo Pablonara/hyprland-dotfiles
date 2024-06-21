@@ -25,6 +25,12 @@ label {
     font-weight: bold;
 }
 
+.volume label {
+    padding-right: 5px;
+}
+
+.battery
+
 .workspaces button.focused {
     border-bottom: 3px solid @theme_selected_bg_color;
 }
@@ -41,4 +47,10 @@ levelbar block,
 highlight {
     min-height: 10px;
 }
+
+window {
+    border-radius: 30px;
+}
+
+
 

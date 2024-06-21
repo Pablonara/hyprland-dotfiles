@@ -31,7 +31,6 @@ const AppItem = function(app) {
 
 const Applauncher = function({ width = 500, height = 500, spacing = 12 }) {
     let applications = query("").map(AppItem);
-
     const list = Widget.Box({
         vertical: true,
         children: applications,
@@ -63,6 +62,7 @@ const Applauncher = function({ width = 500, height = 500, spacing = 12 }) {
     });
 
     return Widget.Box({
+        class_name: "applauncher",
         vertical: true,
         css: `margin: ${spacing * 2}px;`,
         children: [
