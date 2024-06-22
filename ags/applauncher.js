@@ -12,6 +12,7 @@ const AppItem = function(app) {
         },
         attribute: { app },
         child: Widget.Box({
+            class_name: "appItem",
             children: [
                 Widget.Icon({
                     icon: app.icon_name || "",
@@ -88,7 +89,7 @@ const Applauncher = function({ width = 500, height = 500, spacing = 12 }) {
 };
 
 export const applauncher = Widget.Window({
-    name: WINDOW_NAME,
+    name: "applauncher",
     setup: function(self) {
         self.keybind("Escape", function() {
             App.closeWindow(WINDOW_NAME);

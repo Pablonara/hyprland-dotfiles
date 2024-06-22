@@ -6,6 +6,8 @@ const mpris = await Service.import("mpris")
 const audio = await Service.import("audio")
 const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
+const network = await Service.import('network')
+
 
 // battery 
 
@@ -82,6 +84,40 @@ function Workspaces() {
         children: workspaces,
     })
 }
+
+
+
+function WifiIndicator() {
+    return Widget.Box({
+        children: [
+            Widget.Icon({
+                icon: network.wifi.bind('icon_name'),
+            }),
+            Widget.Label({
+                label: network.wifi.bind('ssid')
+                   .as(function(ssid) { return ssid || 'N/A'; }),
+            }),
+        ],
+    });
+}
+
+function WiredIndicator() {
+    return Widget.Icon({
+        icon: network.wired.bind('icon_name'),
+    });
+}
+
+function NetworkIndicator() { // call both indicators because not sure whether will use lan or wlan
+    return Widget.Stack({
+        class_name: "internet",
+        children: {
+            wifi: WifiIndicator(),
+            wired: WiredIndicator(),
+        },
+        shown: network.bind('primary').as(function(p) { return p || 'wifi'; }),
+    });
+}
+
 
 
 function ClientTitle() {
@@ -170,6 +206,7 @@ function Volume() {
     }
 
     const icon = Widget.Icon({
+        class_name: "volumeIcon",
         icon: Utils.watch(getIcon(), audio.speaker, getIcon),
         tooltip_text: String(`Volume ${Math.floor(getVolume())}%`) // this doesnt work fix later
     })
@@ -237,6 +274,7 @@ function Right() {
         hpack: "end",
         spacing: 8,
         children: [
+            NetworkIndicator(),
             Battery(),
             Volume(),
             Notification(),
@@ -282,7 +320,7 @@ function Bar(monitor = 0) {
 App.config({
     style: "./styles.css",
     windows: [
-        Bar(0), // instantiate per monitor
+        Bar(0), // instantiate per monitor in case of multiple monitors
         // Bar(1),
         applauncher,
     ],

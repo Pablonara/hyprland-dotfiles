@@ -1,0 +1,62 @@
+window.bar {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+}
+
+button {
+    min-width: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+button:active {
+    /* background-color: @theme_selected_bg_color; */
+    background-color: #5fc1e7;
+    
+}
+
+button:hover {
+    border-bottom: 3px solid @theme_fg_color;
+}
+
+label {
+    font-weight: bold;
+}
+
+.volume label {
+    padding-right: 5px;
+}
+
+.battery
+
+.workspaces button.focused {
+    border-bottom: 3px solid @theme_selected_bg_color;
+}
+
+.client-title {
+    color: @theme_selected_bg_color;
+}
+
+.notification {
+    color: yellow;
+}
+
+levelbar block,
+highlight {
+    min-height: 10px;
+}
+
+.applauncher background{
+    border-radius: 30px;
+}
+
+.appItem {
+    border-radius: 30px;
+}
+
+window.applauncher {
+    border-radius: 30px; /* Example style */
+}
+

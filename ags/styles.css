@@ -1,6 +1,7 @@
 window.bar {
     background-color: @theme_bg_color;
     color: @theme_fg_color;
+    border-radius: 0px;
 }
 
 button {
@@ -29,6 +30,10 @@ label {
     padding-right: 5px;
 }
 
+.volumeIcon {
+    padding-right: 7px;
+}
+
 .battery
 
 .workspaces button.focused {
@@ -48,9 +53,26 @@ highlight {
     min-height: 10px;
 }
 
+window.background {
+    border-radius: 30px;
+}
+
+.appItem {
+    border-radius: 30px;
+}
+
 window {
     border-radius: 30px;
 }
 
+.internet label{
+    padding-right: 3px;
+    padding-left: 5px;
+} 
 
+window.bar {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+    border-radius: 0px;
+}
 

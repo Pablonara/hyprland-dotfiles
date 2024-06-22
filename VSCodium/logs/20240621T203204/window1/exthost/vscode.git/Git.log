@@ -1,0 +1,76 @@
+2024-06-21 20:32:07.117 [info] Log level: Info
+2024-06-21 20:32:07.117 [info] Validating found git in: "git"
+2024-06-21 20:32:07.117 [info] Using git "2.45.2" from "git"
+2024-06-21 20:32:07.117 [info] > git rev-parse --show-toplevel [4ms]
+2024-06-21 20:32:07.117 [info] > git rev-parse --git-dir --git-common-dir [3ms]
+2024-06-21 20:32:07.117 [info] Open repository: /home/testing/hyprland-dotfiles
+2024-06-21 20:32:07.117 [info] > git rev-parse --show-toplevel [2ms]
+2024-06-21 20:32:07.118 [info] > git config --get commit.template [5ms]
+2024-06-21 20:32:07.125 [info] > git rev-parse --show-toplevel [4ms]
+2024-06-21 20:32:07.128 [info] > git rev-parse --show-toplevel [1ms]
+2024-06-21 20:32:07.130 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [6ms]
+2024-06-21 20:32:07.133 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:32:07.134 [info] > git rev-parse refs/remotes/origin/main [1ms]
+2024-06-21 20:32:07.143 [info] > git status -z -uall [6ms]
+2024-06-21 20:32:07.154 [info] > git merge-base refs/heads/main refs/remotes/origin/main [7ms]
+2024-06-21 20:32:07.158 [info] > git config --get commit.template [4ms]
+2024-06-21 20:32:07.160 [info] > git rev-list --count --left-right refs/heads/main...refs/remotes/origin/main [3ms]
+2024-06-21 20:32:07.166 [info] > git diff --name-status -z --diff-filter=ADMR cd2690220a5a85eb2dbb04f5670f4a90dfe5fabf...refs/remotes/origin/main [3ms]
+2024-06-21 20:32:07.167 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
+2024-06-21 20:32:07.169 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:32:07.171 [info] > git rev-parse refs/remotes/origin/main [1ms]
+2024-06-21 20:32:07.175 [info] > git status -z -uall [2ms]
+2024-06-21 20:32:07.631 [info] > git check-ignore -v -z --stdin [4ms]
+2024-06-21 20:32:11.649 [info] > git check-ignore -v -z --stdin [4ms]
+2024-06-21 20:32:12.413 [info] > git show --textconv :ags/applauncher.js [4ms]
+2024-06-21 20:32:12.418 [info] > git ls-files --stage -- /home/testing/hyprland-dotfiles/ags/applauncher.js [5ms]
+2024-06-21 20:32:12.423 [info] > git cat-file -s 74995450a7771521ec19095e8e13987a0fac0845 [0ms]
+2024-06-21 20:32:12.638 [info] > git show --textconv :ags/config.js [6ms]
+2024-06-21 20:32:12.639 [info] > git ls-files --stage -- /home/testing/hyprland-dotfiles/ags/config.js [2ms]
+2024-06-21 20:32:12.643 [info] > git cat-file -s c664c6ee7ca4be2098150b90ab4b097da4a13a88 [1ms]
+2024-06-21 20:32:42.237 [info] > git show --textconv :ags/styles.css [3ms]
+2024-06-21 20:32:42.238 [info] > git ls-files --stage -- /home/testing/hyprland-dotfiles/ags/styles.css [1ms]
+2024-06-21 20:32:42.242 [info] > git cat-file -s 9d9d39f2c98f9b9dd683bf888b1a52130e281ef9 [1ms]
+2024-06-21 20:35:51.065 [info] > git config --get commit.template [3ms]
+2024-06-21 20:35:51.065 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
+2024-06-21 20:35:51.068 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:35:51.069 [info] > git rev-parse refs/remotes/origin/main [1ms]
+2024-06-21 20:35:51.074 [info] > git status -z -uall [2ms]
+2024-06-21 20:36:36.717 [info] > git config --get commit.template [4ms]
+2024-06-21 20:36:36.717 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
+2024-06-21 20:36:36.720 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:36:36.721 [info] > git rev-parse refs/remotes/origin/main [1ms]
+2024-06-21 20:36:36.726 [info] > git status -z -uall [1ms]
+2024-06-21 20:38:28.601 [info] > git config --get commit.template [4ms]
+2024-06-21 20:38:28.603 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
+2024-06-21 20:38:28.606 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:38:28.607 [info] > git rev-parse refs/remotes/origin/main [1ms]
+2024-06-21 20:38:28.612 [info] > git status -z -uall [1ms]
+2024-06-21 20:38:33.644 [info] > git config --get commit.template [15ms]
+2024-06-21 20:38:33.647 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [6ms]
+2024-06-21 20:38:33.659 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:38:33.663 [info] > git rev-parse refs/remotes/origin/main [4ms]
+2024-06-21 20:38:33.682 [info] > git status -z -uall [7ms]
+2024-06-21 20:38:39.973 [info] > git config --get commit.template [4ms]
+2024-06-21 20:38:39.973 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
+2024-06-21 20:38:39.976 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:38:39.977 [info] > git rev-parse refs/remotes/origin/main [1ms]
+2024-06-21 20:38:39.982 [info] > git status -z -uall [1ms]
+2024-06-21 20:39:03.329 [info] > git config --get commit.template [4ms]
+2024-06-21 20:39:03.330 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
+2024-06-21 20:39:03.334 [warning] ENOENT: no such file or directory, open '/home/testing/hyprland-dotfiles/.git/refs/remotes/origin/main'
+2024-06-21 20:39:03.335 [info] > git rev-parse refs/remotes/origin/main [0ms]
+2024-06-21 20:39:03.339 [info] > git status -z -uall [2ms]
+2024-06-21 20:39:37.817 [info] Log level: Info
+2024-06-21 20:39:37.817 [info] Validating found git in: "git"
+2024-06-21 20:39:37.817 [info] Using git "2.45.2" from "git"
+2024-06-21 20:39:37.817 [info] > git rev-parse --show-toplevel [4ms]
+2024-06-21 20:39:37.817 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-06-21 20:39:39.486 [info] > git rev-parse --show-toplevel [1ms]
+2024-06-21 20:39:39.486 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-06-21 20:42:25.415 [info] > git rev-parse --show-toplevel [1ms]
+2024-06-21 20:42:25.415 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-06-21 20:42:25.786 [info] > git rev-parse --show-toplevel [1ms]
+2024-06-21 20:42:25.786 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-06-21 20:42:37.150 [info] > git rev-parse --show-toplevel [2ms]
+2024-06-21 20:42:37.150 [info] fatal: not a git repository (or any of the parent directories): .git
