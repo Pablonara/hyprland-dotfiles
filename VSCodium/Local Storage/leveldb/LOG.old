@@ -1,3 +1,3 @@
-2024/06/21-20:43:20.871 3476 Reusing MANIFEST /home/testing/.config/VSCodium/Local Storage/leveldb/MANIFEST-000001
-2024/06/21-20:43:20.872 3476 Recovering log #3
-2024/06/21-20:43:20.872 3476 Reusing old log /home/testing/.config/VSCodium/Local Storage/leveldb/000003.log 
+2024/06/21-20:50:32.248 3f12 Reusing MANIFEST /home/testing/.config/VSCodium/Local Storage/leveldb/MANIFEST-000001
+2024/06/21-20:50:32.249 3f12 Recovering log #3
+2024/06/21-20:50:32.249 3f12 Reusing old log /home/testing/.config/VSCodium/Local Storage/leveldb/000003.log 
