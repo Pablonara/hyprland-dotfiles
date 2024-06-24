@@ -1,5 +1,6 @@
 import { applauncher } from "./applauncher.js"
 import { NotificationPopups } from "./notificationPopups.js"
+import { media } from "./media.js"
 
 const hyprland = await Service.import("hyprland")
 const notifications = await Service.import("notifications")
@@ -14,10 +15,10 @@ const network = await Service.import('network')
 
 
 Utils.timeout(100, () => Utils.notify({
-    summary: "hello test1",
+    summary: "notification test",
     iconName: "info-symbolic",
-    body: "google en passant "
-        + "holy hell",
+    body: "hello world!",
+        // + "en passant",
     actions: {
         "Cool": () => print("pressed Cool"),
     },
@@ -233,6 +234,15 @@ function Battery() {
     })
 }
 
+// media
+
+
+const mediaWin = Widget.Window({
+    name: "mpris",
+    anchor: ["top", "right"],
+    child: media(),
+})
+
 // layout of the bar
 function Left() {
     return Widget.Box({
@@ -298,6 +308,7 @@ App.config({
         Bar(0), // instantiate per monitor in case of multiple monitors
         // Bar(1),
         applauncher,
+        mediaWin,
         NotificationPopups(),
     ],
 })
