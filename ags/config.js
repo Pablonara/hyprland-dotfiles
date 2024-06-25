@@ -254,28 +254,30 @@ function Left() {
     })
 }
 
-function Right() {
-    return Widget.Box({
-        hpack: "end",
-        spacing: 8,
-        children: [
-            NetworkIndicator(),
-            Battery(),
-            Volume(),
-            Notification(),
-        ],
-    })
-}
-
 function Center() {
     return Widget.Box({
-        spacing: 8,
+        spacing: 0, // dont change or theres going to be a gap
         children: [
             Clock(),
             Media(),
         ],
     })
 }
+
+function Right() {
+    return Widget.Box({
+        hpack: "end",
+        spacing: 0, // remove gap between the elements 
+        children: [
+            Notification(),
+            NetworkIndicator(),
+            Battery(),
+            Volume(),
+        ],
+    })
+}
+
+
 
 function Bar(monitor = 0) {
     return Widget.Window({

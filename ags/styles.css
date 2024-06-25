@@ -1,6 +1,6 @@
-/* window.notification-popups box.notifications {
+window.notification-popups box.notifications {
     padding: .5em;
-} */
+}
 
 .icon {
     min-width: 64px;
@@ -24,11 +24,12 @@
 
 .notification {
     min-width: 350px;
-    border-radius: 30px;
     /* padding: 1em; */
-    margin: .5em;
+    padding-left: 20px;
+    border-bottom-left-radius: 12px;
     border: 1px solid @wm_borders_edge;
     background-color: @theme_bg_color;
+    /* background-color: rgba(255, 0, 0, 0); */
 }
 
 .notification label {
@@ -67,9 +68,16 @@
 }
 
 window.bar {
-    background-color: @theme_bg_color;
+    /* background-color: @theme_bg_color; */
+    background-color: rgba(255, 0, 0, 0);
     color: @theme_fg_color;
     border-radius: 0px;
+}
+
+.workspaces {
+    background-color: @theme_bg_color;
+    /* border-radius: 12px; */
+    border-bottom-right-radius: 12px;
 }
 
 button {
@@ -83,23 +91,30 @@ button {
 button:active {
     /* background-color: @theme_selected_bg_color; */
     background-color: #5fc1e7;
+    border-radius: 12px;
 
 }
 
-button:hover {
+/* button:hover {
     border-bottom: 3px solid @theme_fg_color;
-}
+} */
 
 label {
     font-weight: bold;
 }
 
+.volume {
+    background-color: @theme_bg_color;
+}
+
 .volume label {
     padding-right: 5px;
+    background-color: @theme_bg_color;
 }
 
 .volumeIcon {
     padding-right: 7px;
+    background-color: @theme_bg_color;
 }
 
 .battery .workspaces button.focused {
@@ -110,8 +125,22 @@ label {
     color: @theme_selected_bg_color;
 }
 
-.notification {
+/* .notification {
     color: yellow;
+} */
+
+.clock {
+    padding-left: 20px;
+    /* padding-right: 20px; */
+    border-bottom-left-radius: 12px;
+    /* border-bottom-right-radius: 12px; */ /* handle this in the media label*/ 
+    background-color: @theme_bg_color;
+}
+
+.media {
+    padding-right: 20px;
+    border-bottom-right-radius: 12px;
+    background-color: @theme_bg_color;
 }
 
 levelbar block,
@@ -136,8 +165,16 @@ window {
     padding-left: 5px;
 }
 
-window.bar {
+.internet {
     background-color: @theme_bg_color;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom-left-radius: 12px;
+}
+
+window.bar {
+    /* background-color: @theme_bg_color; */
+    background-color: rgba(255, 0, 0, 0);
     color: @theme_fg_color;
     border-radius: 0px;
 }
@@ -154,7 +191,7 @@ window.bar {
     min-height: 100px;
     background-size: cover;
     background-position: center;
-    border-radius: 30px;
+    border-radius: 12px;
     margin-right: 1em;
 }
 
