@@ -74,11 +74,12 @@ window.bar {
     border-radius: 0px;
 }
 
-.workspaces {
+.workspacess {
     background-color: @theme_bg_color;
     /* border-radius: 12px; */
     border-bottom-right-radius: 12px;
 }
+
 
 button {
     min-width: 0px;
@@ -117,7 +118,7 @@ label {
     background-color: @theme_bg_color;
 }
 
-.battery .workspaces button.focused {
+.battery .workspacess button.focused {
     border-bottom: 3px solid @theme_selected_bg_color;
 }
 
@@ -173,8 +174,8 @@ window {
 }
 
 window.bar {
-    /* background-color: @theme_bg_color; */
-    background-color: rgba(255, 0, 0, 0);
+    background-color: @theme_bg_color;
+    /* background-color: rgba(255, 0, 0, 0); */
     color: @theme_fg_color;
     border-radius: 0px;
 }
@@ -229,4 +230,67 @@ window.bar {
 
 .player button.play-pause {
     margin: 0 .3em;
+}
+
+.outer-workspace {
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 20px;
+	margin: 2px;
+	padding: 2px 0px;
+}
+
+.workspacess button {
+    padding: 0px 6px;
+}
+
+
+.workspaces.first {
+	border-radius: 20px 0 0 20px;
+}
+.workspaces.last {
+	border-radius: 0 20px 20px 0;
+}
+
+.workspaces.normal,
+.workspaces button.normal {
+	background-color: transparent;
+
+}
+
+.workspaces button.normal:hover {
+	border-radius: 20px;
+}
+
+.workspaces button.focused {
+	color: @base;
+	font-weight: bold;
+	padding-left: 16px;
+	padding-right: 16px;
+	border-radius: 20px;
+}
+
+.workspaces button.focused:hover {
+	border-radius: 20px;
+}
+
+
+.workspacess button.occupied:hover {
+	border-radius: 20px;
+
+}
+
+.workspacess.occupied-single {
+	border-radius: 20px;
+}
+
+.workspacess.occupied-start {
+	border-radius: 20px 0 0 20px;
+}
+
+.workspacess.occupied-middle {
+	border-radius: 0px;
+}
+
+.workspacess.occupied-end {
+	border-radius: 0px 20px 20px 0px;
 }
