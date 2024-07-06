@@ -1,5 +1,6 @@
 window.notification-popups box.notifications {
     padding: .5em;
+    background-color: @theme_bg_color;
 }
 
 .icon {
@@ -26,10 +27,8 @@ window.notification-popups box.notifications {
     min-width: 350px;
     /* padding: 1em; */
     padding-left: 20px;
-    border-bottom-left-radius: 12px;
     border: 1px solid @wm_borders_edge;
-    background-color: @theme_bg_color;
-    /* background-color: rgba(255, 0, 0, 0); */
+    background-color: rgba(255, 0, 0, 0);
 }
 
 .notification label {
@@ -74,11 +73,11 @@ window.bar {
     border-radius: 0px;
 }
 
-.workspacess {
+/* .workspacess {
     background-color: @theme_bg_color;
-    /* border-radius: 12px; */
+    border-radius: 12px;
     border-bottom-right-radius: 12px;
-}
+} */
 
 
 button {
@@ -104,18 +103,18 @@ label {
     font-weight: bold;
 }
 
-.volume {
+/* .volume {
     background-color: @theme_bg_color;
-}
+} */
 
 .volume label {
-    padding-right: 5px;
-    background-color: @theme_bg_color;
+    padding-right: 7px;
+    /* background-color: @theme_bg_color; */
 }
 
 .volumeIcon {
     padding-right: 7px;
-    background-color: @theme_bg_color;
+    /* background-color: @theme_bg_color; */
 }
 
 .battery .workspacess button.focused {
@@ -124,6 +123,7 @@ label {
 
 .client-title {
     color: @theme_selected_bg_color;
+    padding-left: 7px;
 }
 
 /* .notification {
@@ -133,15 +133,14 @@ label {
 .clock {
     padding-left: 20px;
     /* padding-right: 20px; */
-    border-bottom-left-radius: 12px;
     /* border-bottom-right-radius: 12px; */ /* handle this in the media label*/ 
-    background-color: @theme_bg_color;
+    /* background-color: @theme_bg_color; */
 }
 
 .media {
     padding-right: 20px;
     border-bottom-right-radius: 12px;
-    background-color: @theme_bg_color;
+    /* background-color: @theme_bg_color; */
 }
 
 levelbar block,
@@ -167,17 +166,23 @@ window {
 }
 
 .internet {
-    background-color: @theme_bg_color;
+    /* background-color: @theme_bg_color; */
     padding-left: 20px;
     padding-right: 20px;
-    border-bottom-left-radius: 12px;
 }
 
 window.bar {
-    background-color: @theme_bg_color;
+    /* background-color: @theme_bg_color; */
     /* background-color: rgba(255, 0, 0, 0); */
     color: @theme_fg_color;
-    border-radius: 0px;
+    border-style: solid;
+    border-color: #8530d1;
+    border-radius: 25px;
+    margin-top: 5px;
+    border-width: 3px;
+	background-color: #E9D5F1;
+    color: #8030E8;
+    
 }
 
 /* media player */
@@ -237,6 +242,7 @@ window.bar {
 	border-radius: 20px;
 	margin: 2px;
 	padding: 2px 0px;
+    border-color: transparent;
 }
 
 .workspaces button {
@@ -303,16 +309,23 @@ window.bar {
 	border-radius: 20px;
 	margin: 2px;
 	padding: 2px 0px;
+    /* border-style: solid; */
+    border-color: #8030E8;
+    border-width: 3px;
+    /* background-color: #ccccff; */
+    border-color:transparent;
 }
 
 .workspace {
-	background-color: rgba(255, 255, 255, 0.15);
+	/* background-color: rgba(255, 255, 255, 0.15); */
 	padding: 0;
+    background-color: #ccccff;
 }
 
 .workspace button {
 	background-color: transparent;
 	padding: 0px 6px;
+    
 }
 
 .workspace.first {
@@ -325,6 +338,7 @@ window.bar {
 .workspace.normal,
 .workspace button.normal {
 	background-color: transparent;
+    
 	/* color: @; */
 }
 
@@ -335,7 +349,7 @@ window.bar {
 }
 
 .workspace button.focused {
-	background-color: rgba(128, 48, 232, 0.536);
+	background-color: #E9D5F1;
 	color: #8030e8;
 	font-weight: bold;
 	padding-left: 6px;
