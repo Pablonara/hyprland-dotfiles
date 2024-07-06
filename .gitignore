@@ -1,0 +1,9 @@
+*
+!*/
+!.gitignore
+!.git
+!hypr/
+!fish/
+!yakukerc
+!neofetch
+!kitty/
