@@ -1,7 +1,0 @@
-2024-06-21 16:34:11.609 [info] Started local extension host with pid 5290.
-2024-06-21 16:34:14.838 [info] [perf] Render performance baseline is 28ms
-2024-06-21 16:34:26.208 [info] Started local extension host with pid 5502.
-2024-06-21 16:34:28.905 [info] [perf] Render performance baseline is 28ms
-2024-06-21 16:39:09.858 [warning] [File Watcher (parcel)] Watcher shutdown because watched path got deleted (path: /home/testing/hyprland-dotfiles)
-2024-06-21 16:39:09.859 [warning] [File Watcher (node.js)] Watcher shutdown because watched path got deleted
-2024-06-21 16:39:12.146 [warning] [File Watcher (parcel)] Watcher restarts because watched path got created again (path: /home/testing/hyprland-dotfiles)

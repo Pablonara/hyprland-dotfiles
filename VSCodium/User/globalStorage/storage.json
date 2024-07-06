@@ -27,8 +27,8 @@
                 "mode": 0,
                 "x": 0,
                 "y": 0,
-                "width": 960,
-                "height": 1046
+                "width": 1920,
+                "height": 1080
             }
         },
         "openedWindows": []
@@ -71,8 +71,7 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Reopen Closed Editor",
-                                    "enabled": false
+                                    "label": "&&Reopen Closed Editor"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -156,6 +155,13 @@
                         "submenu": {
                             "items": [
                                 {
+                                    "id": "github.copyVscodeDevLinkFile",
+                                    "label": "Copy vscode.dev Link"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
                                     "id": "workbench.profiles.actions.exportProfile",
                                     "label": "Export Profile (Default)..."
                                 },
@@ -180,7 +186,7 @@
                             "items": [
                                 {
                                     "id": "submenuitem.Profiles",
-                                    "label": "Profiles (Default)",
+                                    "label": "Profile (Default)",
                                     "submenu": {
                                         "items": [
                                             {
@@ -1728,5 +1734,6 @@
             "statusBarHeight": 22,
             "windowBorder": false
         }
-    }
+    },
+    "telemetry.devDeviceId": "079bd797-9012-4240-b6e7-a8eb5b19de44"
 }

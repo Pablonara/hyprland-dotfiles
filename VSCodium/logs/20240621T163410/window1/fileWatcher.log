@@ -1,3 +1,0 @@
-2024-06-21 16:39:09.859 [warning] [File Watcher (parcel)] Watcher shutdown because watched path got deleted (path: /home/testing/hyprland-dotfiles)
-2024-06-21 16:39:09.859 [warning] [File Watcher (node.js)] Watcher shutdown because watched path got deleted
-2024-06-21 16:39:12.145 [warning] [File Watcher (parcel)] Watcher restarts because watched path got created again (path: /home/testing/hyprland-dotfiles)

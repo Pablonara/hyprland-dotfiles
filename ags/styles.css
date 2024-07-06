@@ -239,7 +239,7 @@ window.bar {
 	padding: 2px 0px;
 }
 
-.workspacess button {
+.workspaces button {
     padding: 0px 6px;
 }
 
@@ -292,5 +292,85 @@ window.bar {
 }
 
 .workspacess.occupied-end {
+	border-radius: 0px 20px 20px 0px;
+}
+
+/* workspaces new */
+
+
+.outer-workspace {
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 20px;
+	margin: 2px;
+	padding: 2px 0px;
+}
+
+.workspace {
+	background-color: rgba(255, 255, 255, 0.15);
+	padding: 0;
+}
+
+.workspace button {
+	background-color: transparent;
+	padding: 0px 6px;
+}
+
+.workspace.first {
+	border-radius: 20px 0 0 20px;
+}
+.workspace.last {
+	border-radius: 0 20px 20px 0;
+}
+
+.workspace.normal,
+.workspace button.normal {
+	background-color: transparent;
+	/* color: @; */
+}
+
+.workspace button.normal:hover {
+	border-radius: 20px;
+	/* background-color: ;
+	color: ; */
+}
+
+.workspace button.focused {
+	background-color: rgba(128, 48, 232, 0.536);
+	color: #8030e8;
+	font-weight: bold;
+	padding-left: 6px;
+	padding-right: 6px;
+	border-radius: 20px;
+}
+
+.workspace button.focused:hover {
+	border-radius: 20px;
+	/* color: ;
+	background-color: ; */
+}
+
+.workspace button.occupied {
+	/* color: ; */
+}
+
+.workspaces button.occupied:hover {
+	border-radius: 20px;
+	/* background-color: ;
+	color: ; */
+}
+
+.workspace.occupied-single {
+	border-radius: 20px;
+}
+
+.workspace.occupied-start {
+	border-radius: 20px 0 0 20px;
+}
+
+.workspace.occupied-middle {
+	border-radius: 0px;
+}
+
+.workspace.occupied-end {
 	border-radius: 0px 20px 20px 0px;
 }

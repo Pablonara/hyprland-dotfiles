@@ -31,36 +31,37 @@ const date = Variable("", {
     poll: [1000, 'date "+%H:%M:%S %b %e"'],
 })
 
-function Workspaces() {
-    const activeId = hyprland.active.workspace.bind("id")
+// function Workspaces() {
+//     const activeId = hyprland.active.workspace.bind("id")
 
-    const workspaces = Array.from({ length: 10 }, (_, index) => {
-        const id = index + 1;
-        let buttonProps = {
-            on_clicked: function () {
-                hyprland.messageAsync(`dispatch workspace ${id}`);
-            },
-        };
+//     const workspaces = Array.from({ length: 10 }, (_, index) => {
+//         const id = index + 1;
+//         let buttonProps = {
+//             on_clicked: function () {
+//                 hyprland.messageAsync(`dispatch workspace ${id}`);
+//             },
+//         };
 
-        // Add child and class_name properties for IDs other than -98 if you are planning to work with hidden workspaces
-        if (id !== -98) {
-            buttonProps.child = Widget.Label(`${id}`);
-            buttonProps.class_name = activeId.as(function (i) {
-                return i === id ? "focused" : "";
-            });
-        }
+//         // Add child and class_name properties for IDs other than -98 if you are planning to work with hidden workspaces
+//         if (id !== -98) {
+//             buttonProps.child = Widget.Label(`${id}`);
+//             buttonProps.class_name = activeId.as(function (i) {
+//                 return i === id ? "focused" : "";
+//             });
+//         }
 
-        return Widget.Button(buttonProps);
-    });
+//         return Widget.Button(buttonProps);
+//     });
 
 
 
-    return Widget.Box({
-        class_name: "workspaces",
-        children: workspaces,
-    })
-}
+//     return Widget.Box({
+//         class_name: "workspaces",
+//         children: workspaces,
+//     })
+// }
 
+import { Workspaces } from "./workspaces.js"; // updated workspaces
 
 
 function WifiIndicator() {
@@ -248,7 +249,7 @@ function Left() {
     return Widget.Box({
         spacing: 8,
         children: [
-            Workspaces(),
+            // Workspaces(),
             ClientTitle(),
         ],
     })
@@ -260,6 +261,7 @@ function Center() {
         children: [
             Clock(),
             Media(),
+            Workspaces(),
         ],
     })
 }
@@ -273,6 +275,7 @@ function Right() {
             NetworkIndicator(),
             Battery(),
             Volume(),
+            
         ],
     })
 }
