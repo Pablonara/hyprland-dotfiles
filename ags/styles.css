@@ -1,6 +1,14 @@
 window.notification-popups box.notifications {
     padding: .5em;
-    background-color: @theme_bg_color;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 3px;
+    border-color: #9070ba;
+    background-color: rgba(144, 112, 186, 0.4);
+    /* color: #813dd8; */
+    margin-top: 20px;
+    margin-right: 20px;
+    color: @theme_fg_color;
 }
 
 .icon {
@@ -27,30 +35,36 @@ window.notification-popups box.notifications {
     min-width: 350px;
     /* padding: 1em; */
     padding-left: 20px;
-    border: 1px solid @wm_borders_edge;
+    /* border: 1px solid @wm_borders_edge; */
     background-color: rgba(255, 0, 0, 0);
+    color: @theme_fg_color;
 }
 
 .notification label {
     /* for some wierd reason even though in inspector setting color with just .notification works fine you need to set it manually for all attributes .-.*/
     color: #4484b2;
+    color: @theme_fg_color;
 }
 
 .notification image {
     color: #4484b2;
+    color: @theme_fg_color;
 }
 
 .summary {
     color: #b2d1d4;
+    color: @theme_fg_color;
 }
 
 .title {
     color: #4484b2;
     font-size: 1.4em;
+    color: @theme_fg_color;
 }
 
 .body {
     color: #4484b2;
+    color: @theme_fg_color;
 }
 
 .actions .action-button {
@@ -123,7 +137,7 @@ label {
 }
 
 .client-title {
-    color: @theme_selected_bg_color;
+    color: #ff00f2;
     padding-left: 7px;
 }
 
@@ -176,6 +190,7 @@ window.box {
 /* this works! */
 .applauncher entry {
     color: @theme_fg_color;
+    background-color: transparent;
     /* background-color: rgba(144, 112, 186, 0.4); */
     /* don't use commented out above line, it stacks transparency because transparancy/opacity already defined in window.background backgroun-color rgba value */
 }

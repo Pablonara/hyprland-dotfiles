@@ -98,9 +98,14 @@ function NetworkIndicator() { // call both indicators because not sure whether w
 
 
 function ClientTitle() {
+    const title = hyprland.active.client.bind("title");
+    const className = hyprland.active.client.bind("class");
+    function getName() {
+        return title.toString().concat(className.toString());
+    }
     return Widget.Label({
         class_name: "client-title",
-        label: hyprland.active.client.bind("title"),
+        label: hyprland.active.client.bind("class"),
     })
 }
 
