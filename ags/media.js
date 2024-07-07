@@ -146,7 +146,7 @@ function Player(player) {
 export function media() {
     return Widget.Box({
         vertical: true,
-        css: "min-height: 2px; min-width: 2px;", // make it visible
+        css: "min-height: 2px; min-width: 2px; background-color: transparent;", // make it visible
         visible: players.as(p => p.length > 0),
         children: players.as(p => p.map(Player)),
     })

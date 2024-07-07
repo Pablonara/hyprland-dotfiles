@@ -5,7 +5,9 @@
             "file:///home/testing/hyprland-dotfiles": "__default__profile__",
             "file:///home/testing/.config/ags": "__default__profile__"
         },
-        "emptyWindows": {}
+        "emptyWindows": {
+            "1720319480732": "__default__profile__"
+        }
     },
     "profileAssociationsMigration": true,
     "telemetry.sqmId": "",
@@ -17,7 +19,11 @@
                 "folderUri": "file:///home/testing/.config/ags"
             }
         ],
-        "emptyWindows": []
+        "emptyWindows": [
+            {
+                "backupFolder": "1720319480732"
+            }
+        ]
     },
     "windowsState": {
         "lastActiveWindow": {

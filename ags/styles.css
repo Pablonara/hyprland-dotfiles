@@ -70,6 +70,7 @@ window.bar {
     /* background-color: @theme_bg_color; */
     background-color: rgba(255, 0, 0, 0);
     color: @theme_fg_color;
+    color: #9070ba;
     border-radius: 0px;
 }
 
@@ -133,7 +134,8 @@ label {
 .clock {
     padding-left: 20px;
     /* padding-right: 20px; */
-    /* border-bottom-right-radius: 12px; */ /* handle this in the media label*/ 
+    /* border-bottom-right-radius: 12px; */
+    /* handle this in the media label*/
     /* background-color: @theme_bg_color; */
 }
 
@@ -149,11 +151,41 @@ highlight {
 }
 
 window.background {
-    border-radius: 30px;
+    /* border-radius: 30px; */
+    border-style: solid;
+    border-color: #9070ba;
+    border-radius: 25px;
+    margin-top: 5px;
+    border-width: 3px;
+    background-color: rgba(144, 112, 186, 0.4);
+    color: #813dd8;
+    padding: 3px;
+    color: @theme_fg_color;
+
+}
+
+/* testing */
+window.entry {
+    color: rgb(255, 0, 0);
+}
+
+window.box {
+    color: rgb(0, 255, 76);
+}
+
+/* this works! */
+.applauncher entry {
+    color: @theme_fg_color;
+    /* background-color: rgba(144, 112, 186, 0.4); */
+    /* don't use commented out above line, it stacks transparency because transparancy/opacity already defined in window.background backgroun-color rgba value */
 }
 
 .appItem {
     border-radius: 30px;
+}
+
+.appItem label {
+    color: @theme_fg_color;
 }
 
 window {
@@ -174,15 +206,15 @@ window {
 window.bar {
     /* background-color: @theme_bg_color; */
     /* background-color: rgba(255, 0, 0, 0); */
-    color: @theme_fg_color;
     border-style: solid;
-    border-color: #8530d1;
+    border-color: #9070ba;
     border-radius: 25px;
     margin-top: 5px;
     border-width: 3px;
-	background-color: #E9D5F1;
-    color: #8030E8;
-    
+    background-color: rgba(144, 112, 186, 0.4);
+    /* color: #7823e8; */
+    padding: 3px;
+    color: @theme_fg_color;
 }
 
 /* media player */
@@ -238,10 +270,10 @@ window.bar {
 }
 
 .outer-workspace {
-	background-color: rgba(255, 255, 255, 0.05);
-	border-radius: 20px;
-	margin: 2px;
-	padding: 2px 0px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    margin: 2px;
+    padding: 2px 0px;
     border-color: transparent;
 }
 
@@ -251,140 +283,144 @@ window.bar {
 
 
 .workspaces.first {
-	border-radius: 20px 0 0 20px;
+    border-radius: 20px 0 0 20px;
 }
+
 .workspaces.last {
-	border-radius: 0 20px 20px 0;
+    border-radius: 0 20px 20px 0;
 }
 
 .workspaces.normal,
 .workspaces button.normal {
-	background-color: transparent;
+    background-color: transparent;
 
 }
 
 .workspaces button.normal:hover {
-	border-radius: 20px;
+    border-radius: 20px;
 }
 
 .workspaces button.focused {
-	color: @base;
-	font-weight: bold;
-	padding-left: 16px;
-	padding-right: 16px;
-	border-radius: 20px;
+    color: @base;
+    font-weight: bold;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 20px;
 }
 
 .workspaces button.focused:hover {
-	border-radius: 20px;
+    border-radius: 20px;
 }
 
 
 .workspacess button.occupied:hover {
-	border-radius: 20px;
+    border-radius: 20px;
 
 }
 
 .workspacess.occupied-single {
-	border-radius: 20px;
+    border-radius: 20px;
 }
 
 .workspacess.occupied-start {
-	border-radius: 20px 0 0 20px;
+    border-radius: 20px 0 0 20px;
 }
 
 .workspacess.occupied-middle {
-	border-radius: 0px;
+    border-radius: 0px;
 }
 
 .workspacess.occupied-end {
-	border-radius: 0px 20px 20px 0px;
+    border-radius: 0px 20px 20px 0px;
 }
 
 /* workspaces new */
 
 
 .outer-workspace {
-	background-color: rgba(255, 255, 255, 0.05);
-	border-radius: 20px;
-	margin: 2px;
-	padding: 2px 0px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    margin: 2px;
+    padding: 2px 0px;
+    /* padding-top: 3px;
+    padding-bottom: 3px; */
     /* border-style: solid; */
-    border-color: #8030E8;
-    border-width: 3px;
+    /* border-color: #8030E8;
+    border-width: 3px; */
     /* background-color: #ccccff; */
-    border-color:transparent;
+    border-color: transparent;
 }
 
 .workspace {
-	/* background-color: rgba(255, 255, 255, 0.15); */
-	padding: 0;
+    /* background-color: rgba(255, 255, 255, 0.15); */
+    padding: 0;
     background-color: #ccccff;
 }
 
 .workspace button {
-	background-color: transparent;
-	padding: 0px 6px;
-    
+    background-color: transparent;
+    padding: 0px 6px;
+
 }
 
 .workspace.first {
-	border-radius: 20px 0 0 20px;
+    border-radius: 20px 0 0 20px;
 }
+
 .workspace.last {
-	border-radius: 0 20px 20px 0;
+    border-radius: 0 20px 20px 0;
 }
 
 .workspace.normal,
 .workspace button.normal {
-	background-color: transparent;
-    
-	/* color: @; */
+    background-color: transparent;
+
+    /* color: @; */
 }
 
 .workspace button.normal:hover {
-	border-radius: 20px;
-	/* background-color: ;
+    border-radius: 20px;
+    /* background-color: ;
 	color: ; */
 }
 
 .workspace button.focused {
-	background-color: #E9D5F1;
-	color: #8030e8;
-	font-weight: bold;
-	padding-left: 6px;
-	padding-right: 6px;
-	border-radius: 20px;
+    background-color: #E9D5F1;
+    color: #8030e8;
+    font-weight: bold;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 20px;
 }
 
 .workspace button.focused:hover {
-	border-radius: 20px;
-	/* color: ;
+    border-radius: 20px;
+    /* color: ;
 	background-color: ; */
 }
 
 .workspace button.occupied {
-	/* color: ; */
+    /* color: ; */
 }
 
 .workspaces button.occupied:hover {
-	border-radius: 20px;
-	/* background-color: ;
+    border-radius: 20px;
+    /* background-color: ;
 	color: ; */
 }
 
 .workspace.occupied-single {
-	border-radius: 20px;
+    border-radius: 20px;
 }
 
 .workspace.occupied-start {
-	border-radius: 20px 0 0 20px;
+    border-radius: 20px 0 0 20px;
 }
 
 .workspace.occupied-middle {
-	border-radius: 0px;
+    border-radius: 0px;
 }
 
 .workspace.occupied-end {
-	border-radius: 0px 20px 20px 0px;
+    border-radius: 0px 20px 20px 0px;
 }
