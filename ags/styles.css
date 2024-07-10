@@ -6,8 +6,8 @@ window.notification-popups box.notifications {
     border-color: #9070ba;
     background-color: rgba(144, 112, 186, 0.4);
     /* color: #813dd8; */
-    margin-top: 20px;
-    margin-right: 20px;
+    margin-top: 6px;
+    margin-right: 6px;
     color: @theme_fg_color;
 }
 
@@ -221,6 +221,10 @@ window {
 window.bar {
     /* background-color: @theme_bg_color; */
     /* background-color: rgba(255, 0, 0, 0); */
+    border-color: #9070ba;
+    /* border-color: #c13caa;
+    border-color: #33ccffee;
+    border-color: #00ff99ee; */
     border-style: solid;
     border-color: #9070ba;
     border-radius: 25px;
@@ -231,6 +235,10 @@ window.bar {
     padding: 3px;
     color: @theme_fg_color;
 }
+
+/* window > box {
+    margin: 12px;
+} */
 
 /* media player */
 
@@ -403,13 +411,13 @@ window.bar {
     background-color: #E9D5F1;
     color: #8030e8;
     font-weight: bold;
-    padding-left: 6px;
-    padding-right: 6px;
-    border-radius: 20px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 20px 20px 20px 20px;
 }
 
 .workspace button.focused:hover {
-    border-radius: 20px;
+    border-radius: 20px 20px 20px 20px;
     /* color: ;
 	background-color: ; */
 }

@@ -249,6 +249,63 @@ const mediaWin = Widget.Window({
     child: media(),
 })
 
+const SysTray = () => Widget.Box({
+    connections: [[systemtray, box => {
+        box.children = systemtray.items.map(item => Widget.Button({
+            child: Widget.Icon(),
+            onPrimaryClick: (_, event) => item.activate(event),
+            onMiddleClick: (_, event) => item.secondaryActivate(event),
+            onSecondaryClick: (_, event) => item.openMenu(event),
+            connections: [[item, button => {
+                button.child.icon = item.icon;
+                button.tooltipMarkup = item.tooltipMarkup;
+            }]],
+        }));
+    }]]
+});
+
+const SysTrayItem = item => MenuItem({
+    child: Icon({
+        size: 24,
+    }),
+    submenu: item.menu,
+    connections: [[item, btn => {
+        btn.child.icon = item.icon;
+        btn.tooltipMarkup = item.tooltipMarkup;
+    }]]
+});
+
+// below wip, different vars and safer stuff
+// export const SysTray = () => Widget({
+//     type: Gtk.MenuBar,
+//     className: 'systray',
+//     properties: [
+//         ['items', new Map()],
+//         ['onAdded', (box, id) => {
+//             const item = SystemTray.getItem(id);
+//             if (box._items.has(id) || !item)
+//                 return;
+
+//             const widget = SysTrayItem(item);
+//             box._items.set(id, widget);
+//             box.add(widget);
+//             box.show_all();
+//         }],
+//         ['onRemoved', (box, id) => {
+//             if (!box._items.has(id))
+//                 return;
+
+//             box._items.get(id).destroy();
+//             box._items.delete(id);
+//         }],
+//     ],
+//     connections: [
+//         [SystemTray, (box, id) => box._onAdded(box, id), 'added'],
+//         [SystemTray, (box, id) => box._onRemoved(box, id), 'removed'],
+//     ],
+// });
+
+
 // layout of the bar
 function Left() {
     return Widget.Box({
@@ -256,16 +313,16 @@ function Left() {
         children: [
             // Workspaces(),
             ClientTitle(),
+            Media(),
         ],
     })
 }
 
 function Center() {
     return Widget.Box({
-        spacing: 0, // dont change or theres going to be a gap
+        spacing: 8, // dont change or theres going to be a gap
         children: [
             Clock(),
-            Media(),
             Workspaces(),
         ],
     })
@@ -276,6 +333,7 @@ function Right() {
         hpack: "end",
         spacing: 0, // remove gap between the elements 
         children: [
+            SysTray(),
             Notification(),
             NetworkIndicator(),
             Battery(),
@@ -292,6 +350,7 @@ function Bar(monitor = 0) {
         name: `bar-${monitor}`, // name has to be unique because linux stuff
         class_name: "bar",
         monitor,
+        margins: [5, 5, 0, 5],
         anchor: ["top", "left", "right"],
         exclusivity: "exclusive",
         child: Widget.CenterBox({
@@ -318,7 +377,7 @@ App.config({
         Bar(0), // instantiate per monitor in case of multiple monitors
         // Bar(1),
         applauncher,
-        mediaWin,
+        // mediaWin, 
         NotificationPopups(),
     ],
 })
