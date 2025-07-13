@@ -2,7 +2,8 @@
 
 - hyprland for window decorations
 - aylur's gtk shell
-
+- ADW-GTK3 WITH THEME SET TO DARK (don't be like me troubleshooting for 3 hour on new install lol)
+  
 ### Installation
 
 Clone this repository and copy the files into your ~/.config folder :D
