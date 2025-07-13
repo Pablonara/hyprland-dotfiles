@@ -1,6 +1,5 @@
-const notifications = await Service.import("notifications")
+const notifications = await Service.import("notifications");
 
-/** @param {import('resource:///com/github/Aylur/ags/service/notifications.js').Notification} n */ 
 function NotificationIcon({ app_entry, app_icon, image }) {
     if (image) {
         return Widget.Box({
@@ -8,28 +7,27 @@ function NotificationIcon({ app_entry, app_icon, image }) {
                 + "background-size: contain;"
                 + "background-repeat: no-repeat;"
                 + "background-position: center;",
-        })
+        });
     }
 
-    let icon = "dialog-information-symbolic"
+    let icon = "dialog-information-symbolic";
     if (Utils.lookUpIcon(app_icon))
-        icon = app_icon
+        icon = app_icon;
 
     if (app_entry && Utils.lookUpIcon(app_entry))
-        icon = app_entry
+        icon = app_entry;
 
     return Widget.Box({
         child: Widget.Icon(icon),
-    })
+    });
 }
 
-/** @param {import('resource:///com/github/Aylur/ags/service/notifications.js').Notification} n */
 function Notification(n) {
     const icon = Widget.Box({
         vpack: "start",
         class_name: "icon",
         child: NotificationIcon(n),
-    })
+    });
 
     const title = Widget.Label({
         class_name: "title",
@@ -41,7 +39,7 @@ function Notification(n) {
         wrap: true,
         label: n.summary,
         use_markup: true,
-    })
+    });
 
     const body = Widget.Label({
         class_name: "body",
@@ -51,20 +49,20 @@ function Notification(n) {
         justification: "left",
         label: n.body,
         wrap: true,
-    })
+    });
 
     const actions = Widget.Box({
         class_name: "actions",
         children: n.actions.map(({ id, label }) => Widget.Button({
             class_name: "action-button",
             on_clicked: () => {
-                n.invoke(id)
-                n.dismiss()
+                n.invoke(id);
+                n.dismiss();
             },
             hexpand: true,
             child: Widget.Label(label),
         })),
-    })
+    });
 
     return Widget.EventBox(
         {
@@ -86,27 +84,27 @@ function Notification(n) {
             ]),
             actions,
         ),
-    )
+    );
 }
 
 export function NotificationPopups(monitor = 0) {
     const list = Widget.Box({
         vertical: true,
         children: notifications.popups.map(Notification),
-    })
+    });
 
-    function onNotified(_, /** @type {number} */ id) {
-        const n = notifications.getNotification(id)
+    function onNotified(_, id) {
+        const n = notifications.getNotification(id);
         if (n)
-            list.children = [Notification(n), ...list.children]
+            list.children = [Notification(n), ...list.children];
     }
 
-    function onDismissed(_, /** @type {number} */ id) {
-        list.children.find(n => n.attribute.id === id)?.destroy()
+    function onDismissed(_, id) {
+        list.children.find(n => n.attribute.id === id)?.destroy();
     }
 
     list.hook(notifications, onNotified, "notified")
-        .hook(notifications, onDismissed, "dismissed")
+        .hook(notifications, onDismissed, "dismissed");
 
     return Widget.Window({
         monitor,
@@ -119,5 +117,5 @@ export function NotificationPopups(monitor = 0) {
             vertical: true,
             child: list,
         }),
-    })
+    });
 }

@@ -1,36 +1,31 @@
 const { query } = await Service.import("applications");
 const WINDOW_NAME = "applauncher";
 
-/** 
- * @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app 
- */
-const AppItem = function(app) {
-    return Widget.Button({
-        on_clicked: function() {
-            App.closeWindow(WINDOW_NAME);
-            app.launch();
-        },
-        attribute: { app },
-        child: Widget.Box({
-            class_name: "appItem",
-            children: [
-                Widget.Icon({
-                    icon: app.icon_name || "",
-                    size: 42,
-                }),
-                Widget.Label({
-                    class_name: "title",
-                    label: app.name,
-                    xalign: 0,
-                    vpack: "center",
-                    truncate: "end",
-                }),
-            ],
-        }),
-    });
-};
+const AppItem = app => Widget.Button({
+    on_clicked: () => {
+        App.closeWindow(WINDOW_NAME);
+        app.launch();
+    },
+    attribute: { app },
+    child: Widget.Box({
+        class_name: "appItem",
+        children: [
+            Widget.Icon({
+                icon: app.icon_name || "",
+                size: 42,
+            }),
+            Widget.Label({
+                class_name: "title",
+                label: app.name,
+                xalign: 0,
+                vpack: "center",
+                truncate: "end",
+            }),
+        ],
+    }),
+});
 
-const Applauncher = function({ width = 500, height = 500, spacing = 12 }) {
+const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
     let applications = query("").map(AppItem);
     const list = Widget.Box({
         vertical: true,
@@ -46,17 +41,15 @@ const Applauncher = function({ width = 500, height = 500, spacing = 12 }) {
     const entry = Widget.Entry({
         hexpand: true,
         css: `margin-bottom: ${spacing}px;`,
-        on_accept: function() {
-            const results = applications.filter(function(item) {
-                return item.visible;
-            });
+        on_accept: () => {
+            const results = applications.filter(item => item.visible);
             if (results[0]) {
                 App.toggleWindow(WINDOW_NAME);
                 results[0].attribute.app.launch();
             }
         },
-        on_change: function({ text }) {
-            applications.forEach(function(item) {
+        on_change: ({ text }) => {
+            applications.forEach(item => {
                 item.visible = item.attribute.app.match(text ?? "");
             });
         },
@@ -74,27 +67,22 @@ const Applauncher = function({ width = 500, height = 500, spacing = 12 }) {
                 child: list,
             }),
         ],
-        setup: function(self) {
-            self.hook(App, function(_, windowName, visible) {
-                if (windowName !== WINDOW_NAME) return;
-                // when the applauncher shows up
-                if (visible) {
-                    repopulate();
-                    entry.text = "";
-                    entry.grab_focus();
-                }
-            });
-        },
+        setup: self => self.hook(App, (_, windowName, visible) => {
+            if (windowName !== WINDOW_NAME) return;
+            if (visible) {
+                repopulate();
+                entry.text = "";
+                entry.grab_focus();
+            }
+        }),
     });
 };
 
 export const applauncher = Widget.Window({
     name: "applauncher",
-    setup: function(self) {
-        self.keybind("Escape", function() {
-            App.closeWindow(WINDOW_NAME);
-        });
-    },
+    setup: self => self.keybind("Escape", () => {
+        App.closeWindow(WINDOW_NAME);
+    }),
     visible: false,
     keymode: "exclusive",
     child: Applauncher({
